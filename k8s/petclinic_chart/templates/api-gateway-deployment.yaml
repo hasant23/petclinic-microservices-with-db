@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates
+    kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates/
     kompose.image-pull-secret: regcred
     kompose.service.expose: '{{ .Values.DNS_NAME }}'
     kompose.service.nodeport.port: "30001"
@@ -21,7 +21,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates
+        kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates/
         kompose.image-pull-secret: regcred
         kompose.service.expose: '{{ .Values.DNS_NAME }}'
         kompose.service.nodeport.port: "30001"
@@ -40,7 +40,7 @@ spec:
       initContainers:
       - name: init-discovery-server
         image: busybox
-        command: ['sh', '-c', 'until nc -z discovery-server:8761; do echo waiting for discovery-server; sleep 2; done;']          
+        command: ['sh', '-c', 'until nc -z discovery-server:8761; do echo waiting for discovery-server; sleep 2; done;']
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always

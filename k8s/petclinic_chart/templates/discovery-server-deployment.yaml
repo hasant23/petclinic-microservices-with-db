@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates
+    kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates/
     kompose.image-pull-secret: regcred
     kompose.version: 1.26.1 (a9d05d509)
   creationTimestamp: null
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates
+        kompose.cmd: kompose convert -f docker-compose.yml -o petclinic_chart/templates/
         kompose.image-pull-secret: regcred
         kompose.version: 1.26.1 (a9d05d509)
       creationTimestamp: null
@@ -34,7 +34,7 @@ spec:
       initContainers:
       - name: init-config-server
         image: busybox
-        command: ['sh', '-c', 'until nc -z config-server:8888; do echo waiting for config-server; sleep 2; done;']          
+        command: ['sh', '-c', 'until nc -z config-server:8888; do echo waiting for config-server; sleep 2; done;']
       imagePullSecrets:
         - name: regcred
       restartPolicy: Always

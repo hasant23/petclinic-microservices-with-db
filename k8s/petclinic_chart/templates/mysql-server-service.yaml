@@ -9,6 +9,4 @@ metadata:
   name: mysql-server
 spec:
   type: ExternalName
-  externalName: petclinic.c7ijbtqqevht.us-east-1.rds.amazonaws.com  # Change this line with the endpoint of your RDS.
- 
-
+  externalName: petclinic.cvb2zunpjl0t.us-east-2.rds.amazonaws.com # Change this line with the endpoint of your RDS.
